@@ -2,6 +2,8 @@
 
 This library attempts to make the GHC API much more user-friendly, using familiar type classes, avoiding dangerous operations, etc.
 
+Check out the [Haddocks](https://sellout.github.io/ghc-user/index.html).
+
 ## Working with this project.
 
 The Haskell is generated from the `ghc` library using a Perl script. After running the initial generation, you can use `cabal` to build, etc. None of the Haskell code is in version control. All changes must be made via the [generate-haskell.pl](./generate-haskell.pl) script and the files in [templates/](./templates).
