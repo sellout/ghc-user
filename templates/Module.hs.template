@@ -1,0 +1,20 @@
+[% warning %]
+
+-- | [% doc %]
+--
+--  __NB__: Supplants "[% old %]".
+module GhcUser.[% new %]
+  ( module GhcUser.[% new %],
+    module [% old %]
+  )
+where
+
+import qualified [% old %] hiding ([% FOREACH identifier IN hidden %][% identifier %], [% END %])
+
+[% FOREACH definition IN rename %]
+-- | [% definition.doc %]
+--
+--  __NB__: Renamed from `[% old %].[% definition.old %]`.
+[% definition.new %] = [% old %].[% definition.old %]
+[% END %]
+
