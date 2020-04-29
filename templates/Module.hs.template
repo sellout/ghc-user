@@ -1,20 +1,22 @@
 [% warning %]
 
+{-# language PackageImports #-}
+
 -- | [% doc %]
 --
 --  __NB__: Supplants "[% old %]".
-module GhcUser.[% new %]
-  ( module GhcUser.[% new %],
-    module [% old %]
+module [% new %]
+  ( module [% new %],
+    module Old
   )
 where
 
-import qualified [% old %] hiding ([% FOREACH identifier IN hidden %][% identifier %], [% END %])
+import qualified "ghc" [% old %] as Old hiding ([% FOREACH identifier IN hidden %][% identifier %], [% END %])
 
 [% FOREACH definition IN rename %]
 -- | [% definition.doc %]
 --
---  __NB__: Renamed from `[% old %].[% definition.old %]`.
-[% definition.new %] = [% old %].[% definition.old %]
+--  __NB__: Renamed from `Old.[% definition.old %]`.
+[% definition.new %] = Old.[% definition.old %]
 [% END %]
 
